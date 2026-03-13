@@ -1,0 +1,56 @@
+{
+    "name": "InputPlayer",
+    "maps": [
+        {
+            "name": "BarquinhoActions",
+            "id": "44cd2cd4-80da-4f2f-9e92-13535e6f5da1",
+            "actions": [
+                {
+                    "name": "Look",
+                    "type": "Value",
+                    "id": "f1145a00-617b-46be-b3b0-7b40fd0979bc",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "e401ed07-0ace-43fc-8c4c-8e36e1b06672",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d5bedb53-65d0-45f6-bff3-f05dd3b107b9",
+                    "path": "<DualShockGamepad>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1cc13cb2-05c6-4d6c-bcb0-366a22d843d2",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Look",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

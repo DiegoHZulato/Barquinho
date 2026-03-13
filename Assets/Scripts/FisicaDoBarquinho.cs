@@ -1,51 +1,43 @@
 ﻿using UnityEngine;
 
-namespace DiegoHZulato
+namespace TrilloBit3sIndieGames
 {
     public class FisicaDoBarquinho : MonoBehaviour
     {
-        public static void ApplyForceToReachVelocity(Rigidbody rigidbody, Vector3 velocity, float force = 1f, ForceMode mode = ForceMode.Force)
+        public static void ApplyForceToReachVelocity(Rigidbody rigidbody, Vector3 velocity, float force = 1, ForceMode mode = ForceMode.Force)
         {
-            if (force == 0f || velocity.magnitude == 0f)
+            if (force == 0 || velocity.magnitude == 0)
                 return;
 
             velocity = velocity + velocity.normalized * 0.2f * rigidbody.drag;
 
             force = Mathf.Clamp(force, -rigidbody.mass / Time.fixedDeltaTime, rigidbody.mass / Time.fixedDeltaTime);
 
-            if (rigidbody.velocity.magnitude == 0f)
+            if (rigidbody.velocity.magnitude == 0)
             {
                 rigidbody.AddForce(velocity * force, mode);
             }
             else
             {
-                var velocityProjectedToTarget =
-                    velocity.normalized *
-                    Vector3.Dot(velocity, rigidbody.velocity) /
-                    velocity.magnitude;
-
+                var velocityProjectedToTarget = (velocity.normalized * Vector3.Dot(velocity, rigidbody.velocity) / velocity.magnitude);
                 rigidbody.AddForce((velocity - velocityProjectedToTarget) * force, mode);
             }
         }
 
-        public static void ApplyTorqueToReachRPS(Rigidbody rigidbody, Quaternion rotation, float rps, float force = 1f)
+        public static void ApplyTorqueToReachRPS(Rigidbody rigidbody, Quaternion rotation, float rps, float force = 1)
         {
-            var radPerSecond = rps * 2f * Mathf.PI + rigidbody.angularDrag * 20f;
+            var radPerSecond = rps * 2 * Mathf.PI + rigidbody.angularDrag * 20;
 
             float angleInDegrees;
             Vector3 rotationAxis;
             rotation.ToAngleAxis(out angleInDegrees, out rotationAxis);
 
-            if (force == 0f || rotationAxis == Vector3.zero)
+            if (force == 0 || rotationAxis == Vector3.zero)
                 return;
 
             rigidbody.maxAngularVelocity = Mathf.Max(rigidbody.maxAngularVelocity, radPerSecond);
 
-            force = Mathf.Clamp(
-                force,
-                -rigidbody.mass * 2f * Mathf.PI / Time.fixedDeltaTime,
-                rigidbody.mass * 2f * Mathf.PI / Time.fixedDeltaTime
-            );
+            force = Mathf.Clamp(force, -rigidbody.mass * 2 * Mathf.PI / Time.fixedDeltaTime, rigidbody.mass * 2 * Mathf.PI / Time.fixedDeltaTime);
 
             var currentSpeed = Vector3.Project(rigidbody.angularVelocity, rotationAxis).magnitude;
 
@@ -71,7 +63,7 @@ namespace DiegoHZulato
 
         public static Vector3 GetNormal(Vector3[] points)
         {
-            if (points == null || points.Length < 3)
+            if (points.Length < 3)
                 return Vector3.up;
 
             var center = GetCenter(points);
@@ -95,24 +87,18 @@ namespace DiegoHZulato
 
             if (det_x > det_y && det_x > det_z)
                 return new Vector3(det_x, xz * yz - xy * zz, xy * yz - xz * yy).normalized;
-
             if (det_y > det_z)
                 return new Vector3(xz * yz - xy * zz, det_y, xy * xz - yz * xx).normalized;
-
-            return new Vector3(xy * yz - xz * yy, xy * xz - yz * xx, det_z).normalized;
+            else
+                return new Vector3(xy * yz - xz * yy, xy * xz - yz * xx, det_z).normalized;
         }
 
         public static Vector3 GetCenter(Vector3[] points)
         {
-            if (points == null || points.Length == 0)
-                return Vector3.zero;
-
             var center = Vector3.zero;
-
             for (int i = 0; i < points.Length; i++)
-                center += points[i];
-
-            return center / points.Length;
+                center += points[i] / points.Length;
+            return center;
         }
     }
 }

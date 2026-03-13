@@ -175,7 +175,8 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Standalone: com.DiegoHZulato.Barco
-  buildNumber: {}
+  buildNumber:
+    Standalone: 0.1
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 19
   AndroidTargetSdkVersion: 0
@@ -711,6 +712,6 @@ PlayerSettings:
   projectName: Barco
   organizationId: unity_cfa67180602b05fe979f
   cloudEnabled: 0
-  enableNativePlatformBackendsForNewInputSystem: 0
+  enableNativePlatformBackendsForNewInputSystem: 1
   disableOldInputManagerSupport: 0
   legacyClampBlendShapeWeights: 0
