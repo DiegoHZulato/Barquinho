@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu Inicial.unity
+    guid: 2b7f350160b8d4c48b4675ce8c167a6c
+  - enabled: 1
+    path: Assets/Scenes/Naval Wars.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: c075b4fc7b48acc40baae768ea30e834
   m_configObjects: {}
